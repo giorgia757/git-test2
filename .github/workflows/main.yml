@@ -2,7 +2,6 @@ on: workflow_dispatch
 jobs:
     BuildPackage:
         runs-on: ubuntu-latest
-   
         steps:
             - name: Clone
               uses: actions/checkout@v2
