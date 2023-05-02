@@ -1,21 +1,21 @@
 on: workflow_dispatch
 jobs:
   BuildPackage:
-    - name: Build the Package
-      runs-on: ubuntu-latest
-  steps:
-    - name: Clone
-      uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: "3.9"
-    - name: install
-      run: |
-        pip install pytest
-        pip install setuptools
-        pytest seup.py bdist_wheel
-    - uses: actions/upload-artifact@v3
-      with:
-        name: gio.whl
-        path: gioPackage/dist/*
+    runs-on: ubuntu-latest
+      
+    steps:
+      - name: Clone
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9" 
+      - name: install
+        run: |
+          pip install pytest
+          pip install setuptools
+          pytest seup.py bdist_wheel
+      - uses: actions/upload-artifact@v3
+        with:
+          name: gio.whl
+          path: gioPackage/dist/*
