@@ -1,7 +1,6 @@
 on: workflow_dispatch
 jobs:
     BuildPackage:
-    name: Build the  BuildPackage
     runs-on: ubuntu-latest
    
     steps:
