@@ -1,0 +1,27 @@
+on: workflow_dispatch
+ jobs:
+    BuildPackage:
+    name: Build the  BuildPackage
+    runs-on: ubuntu-latest
+    needs: UnitTests
+   
+    steps:
+     - name: Clone
+       uses: actions/checkout@v2
+
+     - name: Set up Python
+       uses: actions/setup-python@v2
+       with:
+         python-version: '3.9'
+
+     - name:  run unit tests
+       run: |
+         pip install pytest
+         pip install setuptools
+         pytest test.py
+         pytest seup.py bdist_wheel
+     - uses: actions/upload-artifact@v3
+       with:
+         name: EreklesPackage-1.0-py2.py3-none-any.whl
+         path: EreklesPackage/dist/*
+         
